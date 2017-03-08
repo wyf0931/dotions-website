@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>google translate</title>
+		
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+		
+			function toJson(str){
+			 	var json = eval('(' + str + ')');
+			 	return json;
+			}
+		
+			function translate(u) {
+				$.ajax({
+					url: u, 
+					type: 'GET',
+					dataType: 'text',
+					timeout: 3000,
+					success: function(data) {
+						console.log('data='+ data);
+						var j = toJson(data);
+						var tran = '';
+						for(var i = 0; i < j[0].length; i++) {
+							console.log(j[0][i][0]);
+							tran += j[0][i][0];
+						}
+						console.log('tran='+ tran);
+						$('#t').val(tran);
+					},
+					error: function() {
+						$('#t').val('Request fail, please retry!');
+					}
+				});
+			}
+			
+			function getUrl(source, target, param) {
+				return 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=' 
+						+ source + '&tl=' + target + '&dt=t&q=' + encodeURI(param);
+			}
+			
+			var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=';
+		
+			$(document).ready(function($) {
+				$('#zh2EN').on('click', function(){
+					var u = getUrl('zh-CN', 'en', $('#s').val());
+					console.log('url='+ u);
+					translate(u);
+				});
+				
+				$('#en2CN').on('click', function(){
+					var u = getUrl('en', 'zh-CN', $('#s').val());
+					console.log('url='+ u);
+					translate(u);
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+			  	<h1>Google Translate</h1>
+			</div>
+			<form>
+				<div class="form-group">
+					<label for="s">原文</label>
+					<textarea rows="8" class="form-control" id="s"></textarea>
+				</div>
+				
+				<div class="form-group">
+					<label for="t">译文</label>
+					<textarea rows="8" class="form-control" id="t" readonly></textarea>
+				</div>
+				
+				<div class="form-group" align="center">
+					<button type="button" class="btn btn-warning" id="zh2EN">中译英</button>
+					&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-success" id="en2CN">英译中</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
