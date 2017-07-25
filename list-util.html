@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>ListUtil</title>
+<meta charset="UTF-8">
+
+<xmp theme="united" style="display:none;">
+
+## 功能
+将 *srcList* 切分成大小为 *groupSize* 的分组。
+
+## 源码
+
+```
+public static <T> List<List<T>> split(List<T> srcList, int groupSize) {
+		int mod = srcList.size() % groupSize;
+		int pou = srcList.size() / groupSize;
+		int len = (mod == 0 ? pou : pou + 1);
+		int n = 0;
+		int start;
+		
+		List<T> list = null;
+		List<List<T>> rlist = new ArrayList<List<T>>();
+		
+		for (int i = 0; i < len; i++) {
+			if(i == pou) {
+				n = mod;
+			} else {
+				n = groupSize;
+			}
+			list = new ArrayList<T>(n);
+			start = i * groupSize;
+			for (int k = 0; k < n; k++) {
+				list.add(srcList.get(start + k));
+			}
+			rlist.add(list);
+		}
+		return rlist;
+	}
+```
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>

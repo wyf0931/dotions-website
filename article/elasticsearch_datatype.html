@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<title>Elasticsearch &#23383;&#27573;&#25968;&#25454;&#31867;&#22411;</title>
+	<meta charset="UTF-8">
+
+	<xmp theme="united" style="display:none;">
+Elasticsearch &#21487;&#20197;&#25903;&#25345;&#21333;&#20010;document&#20013;&#21547;&#26377;&#22810;&#20010;&#19981;&#21516;&#30340;&#25968;&#25454;&#31867;&#22411;&#12290;
+
+---
+##### &#26680;&#24515;&#25968;&#25454;&#31867;&#22411;&#65288;Core datatypes&#65289;
+* &#23383;&#31526;&#22411;&#65288;[String datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/string.html)&#65289;&#65306;string
+* &#25968;&#23383;&#22411;&#65288;[Numeric datatypes](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/number.html)&#65289;&#65306;long, integer, short, byte, double, float
+* &#26085;&#26399;&#22411;&#65288;[Date datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/date.html)&#65289;&#65306;date
+* &#24067;&#23572;&#22411;&#65288;[Boolean datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/boolean.html)&#65289;&#65306;boolean
+* &#20108;&#36827;&#21046;&#22411;&#65288;[Binary datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/binary.html)&#65289;&#65306;binary
+
+##### &#22797;&#26434;&#25968;&#25454;&#31867;&#22411;&#65288;Complex datatypes&#65289;
+* &#25968;&#32452;&#31867;&#22411;&#65288;[Array datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/array.html)&#65289;&#65306;&#25968;&#32452;&#31867;&#22411;&#19981;&#38656;&#35201;&#19987;&#38376;&#25351;&#23450;&#25968;&#32452;&#20803;&#32032;&#30340;type&#65292;&#20363;&#22914;&#65306;
+  * &#23383;&#31526;&#22411;&#25968;&#32452;: [ "one", "two" ]
+  * &#25972;&#22411;&#25968;&#32452;&#65306;[ 1, 2 ]
+  * &#25968;&#32452;&#22411;&#25968;&#32452;&#65306;[ 1, [ 2, 3 ]] &#31561;&#20215;&#20110;[ 1, 2, 3 ]
+  * &#23545;&#35937;&#25968;&#32452;&#65306;[ { "name": "Mary", "age": 12 }, { "name": "John", "age": 10 }]
+* &#23545;&#35937;&#31867;&#22411;&#65288;[Object datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/object.html)&#65289;&#65306;_ object _ &#29992;&#20110;&#21333;&#20010;JSON&#23545;&#35937;&#65307;
+* &#23884;&#22871;&#31867;&#22411;&#65288;[Nested datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/nested.html)&#65289;&#65306;_ nested _ &#29992;&#20110;JSON&#25968;&#32452;&#65307;
+
+##### &#22320;&#29702;&#20301;&#32622;&#31867;&#22411;&#65288;Geo datatypes&#65289;
+* &#22320;&#29702;&#22352;&#26631;&#31867;&#22411;&#65288;[Geo-point datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/geo-point.html)&#65289;&#65306;_ geo_point _  &#29992;&#20110;&#32463;&#32428;&#24230;&#22352;&#26631;&#65307;
+* &#22320;&#29702;&#24418;&#29366;&#31867;&#22411;&#65288;[Geo-Shape datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/geo-shape.html)&#65289;&#65306;_ geo_shape _ &#29992;&#20110;&#31867;&#20284;&#20110;&#22810;&#36793;&#24418;&#30340;&#22797;&#26434;&#24418;&#29366;&#65307;
+
+##### &#19987;&#19994;&#31867;&#22411;&#65288;Specialised datatypes&#65289;
+* IPv4 &#31867;&#22411;&#65288;[IPv4 datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/ip.html)&#65289;&#65306;_ ip _ &#29992;&#20110;IPv4 &#22320;&#22336;&#65307;
+* Completion &#31867;&#22411;&#65288;[Completion datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/search-suggesters-completion.html)&#65289;&#65306;_ completion _&#25552;&#20379;&#33258;&#21160;&#34917;&#20840;&#24314;&#35758;&#65307;
+* Token count &#31867;&#22411;&#65288;[Token count datatype](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/token-count.html)&#65289;&#65306;_ token_count _ &#29992;&#20110;&#32479;&#35745;&#20570;&#20102;&#26631;&#35760;&#30340;&#23383;&#27573;&#30340;index&#25968;&#30446;&#65292;&#35813;&#20540;&#20250;&#19968;&#30452;&#22686;&#21152;&#65292;&#19981;&#20250;&#22240;&#20026;&#36807;&#28388;&#26465;&#20214;&#32780;&#20943;&#23569;&#12290;
+* [mapper-murmur3
+](https://www.elastic.co/guide/en/elasticsearch/plugins/2.3/mapper-size.html)&#31867;&#22411;&#65306;&#36890;&#36807;&#25554;&#20214;&#65292;&#21487;&#20197;&#36890;&#36807; _ murmur3 _ &#26469;&#35745;&#31639;index&#30340; hash &#20540;&#65307;
+* &#38468;&#21152;&#31867;&#22411;&#65288;Attachment datatype&#65289;&#65306;&#37319;&#29992;[mapper-attachments
+](https://www.elastic.co/guide/en/elasticsearch/plugins/2.3/mapper-attachments.html) &#25554;&#20214;&#65292;&#21487;&#25903;&#25345;_ attachments _ &#32034;&#24341;&#65292;&#20363;&#22914;Microsoft Office &#26684;&#24335;&#65292;Open Document &#26684;&#24335;&#65292;ePub, HTML &#31561;&#12290;
+	</xmp>
+
+	<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
